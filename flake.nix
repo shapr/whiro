@@ -9,11 +9,10 @@
       url = "github:numtide/flake-utils";
     };
   };
-  outputs = { self, nixpkgs, srvos, ... }@inputs:
-    inputs.flake-utils.lib.eachDefaultSystem (system: rec {
+  outputs = { self, nixpkgs, srvos, ... }:
+    {
       nixosConfigurations.whiro = nixpkgs.lib.nixosSystem {
-        inherit system;
-        specialArgs.inputs = inputs;
+        system = "x86_64-linux";
         modules = [
           srvos.nixosModules.hardware-hetzner-cloud
           srvos.nixosModules.mixins-terminfo
@@ -23,12 +22,12 @@
           ./configuration.nix
         ];
       };
-      apps = rec {
-        default = test;
-        test = {
-          type = "app";
-          program = "${nixosConfigurations.whiro.config.system.build.vm}/bin/run-nixos-vm";
-        };
-      };
-    });
+      # apps = rec {
+      #   default = test;
+      #   test = {
+      #     type = "app";
+      #     program = "${nixosConfigurations.whiro.config.system.build.vm}/bin/run-nixos-vm";
+      #   };
+      # };
+    };
 }
