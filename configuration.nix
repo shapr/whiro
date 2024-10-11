@@ -24,6 +24,7 @@
     };
   };
   environment.systemPackages = with pkgs; [ htop ];
+  documentation.nixos.enable = false;
   time.timeZone = "Europe/London";
   i18n.defaultLocale = "en_US.UTF-8";
   console.keyMap = "us";
@@ -52,7 +53,6 @@
     auto-optimise-store = true;
     trusted-users = [ "@wheel" ];
   };
-  documentation.nixos.enable = false;
   networking.hostName = "whiro";
   networking.domain = "scannedinavian.org";
   networking.firewall.allowedTCPPorts = [
@@ -123,12 +123,7 @@
 
   users.users.nginx.extraGroups = [ "acme" ];
 
-  # services.postgresql = {
-  #   enable = true;
-  #   package = pkgs.postgresql_14;
-  #   extraPlugins = [pkgs.postgresql14Packages.postgis pkgs.postgresql14Packages.pg_repack];
-  #   dataDir = "/data/postgres";
-  # };
+
   programs.zsh.enable = true;
   users.users.root.openssh.authorizedKeys.keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJYlatXccSMal4uwSogKUEfJgrJ3YsH2uSbLFfgz6Vam" ];
   users.users.shae = {
