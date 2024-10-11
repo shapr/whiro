@@ -119,7 +119,7 @@
 
         enableACME = true;
         forceSSL = true;
-        root = "${pkgs.callPackage ./shaesitee.nix {} }/dist";
+        # root = "${pkgs.callPackage ./shaesitee.nix {} }/dist";
 
       };
     };
