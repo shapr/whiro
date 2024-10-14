@@ -28,6 +28,8 @@
   time.timeZone = "Europe/London";
   i18n.defaultLocale = "en_US.UTF-8";
   console.keyMap = "us";
+
+  ### drive layout
   fileSystems = {
     "/" = {
       device = "/dev/disk/by-label/nixos";
@@ -39,7 +41,8 @@
     };
   };
   swapDevices = [ { device = "/dev/disk/by-label/swap"; } ];
-  # this might completely kill my server, yay?
+
+  ### boot setup
   boot = {
     loader.grub = {
       enable = true;
@@ -48,6 +51,7 @@
     initrd.availableKernelModules = [ "ahci" "xhci_pci" "virtio_pci" "virtio_scsi" "sd_mod" "sr_mod" "ext4" ];
   };
 
+  ### nix settings
   nix.settings = {
     experimental-features = [ "nix-command" "flakes" ];
     auto-optimise-store = true;
@@ -67,6 +71,8 @@
       "numtide.cachix.org-1:2ps1kLBUWjxIneOy1Ik6cQjb41X0iXVXeHigGmycPPE="
     ];
   };
+
+  ### networking
   networking.hostName = "whiro";
   networking.domain = "scannedinavian.org";
   networking.firewall.allowedTCPPorts = [
@@ -80,6 +86,9 @@
     993 # IMAP with TLS
     # 5000 # ZNC IRC bouncer
   ];
+  ### static config for networking from https://wiki.nixos.org/wiki/Install_NixOS_on_Hetzner_Cloud#Network_configuration
+  #systemd.network.enable = true;
+  #systemd.network.networks
 
   # letsencrypt plz
   security.acme = {
@@ -119,7 +128,7 @@
 
         enableACME = true;
         forceSSL = true;
-        # root = "${pkgs.callPackage ./shaesitee.nix {} }/dist";
+        root = "${pkgs.callPackage ./scannedinavian.nix {} }/dist";
 
       };
     };
@@ -137,8 +146,8 @@
 
   users.users.nginx.extraGroups = [ "acme" ];
 
-
   programs.zsh.enable = true;
+
   users.users.root.openssh.authorizedKeys.keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJYlatXccSMal4uwSogKUEfJgrJ3YsH2uSbLFfgz6Vam" ];
   users.users.shae = {
     home = "/home/shae";
