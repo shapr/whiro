@@ -3,9 +3,9 @@ let
   src = fetchFromGitHub {
     owner = "shapr";
     repo = "scannedinavian";
-    rev = "41fca3a5ae1a1872436672ac755133e24018336e";
-    sha256 = "1nnpm0vc4ymns8fcqnjc50by8lscmlzk5akv8pr1zgkfa0l4byz6";
-    # date = "2024-10-14T18:16:50-04:00";
+    rev = "16f8fe4334ed2ca6f7e6256702af7c4b7d9ddd9b";
+    sha256 = "16i499b3imnxp28q6jc6zwsrligirbnc3xm02z6lql1309ajwc49";
+    # date = "2024-10-14T18:39:16-04:00";
  };
   wrappedFlake = import "${src}";
 in
