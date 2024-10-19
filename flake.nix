@@ -5,13 +5,19 @@
     # Use the version of nixpkgs that has been tested to work with SrvOS
     # Alternatively we also support the latest nixos release and unstable
     nixpkgs.follows = "srvos/nixpkgs";
+    scannedinavianblog = {
+      url = "github:shapr/scannedinavian";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     flake-utils = {
       url = "github:numtide/flake-utils";
     };
   };
-  outputs = { self, nixpkgs, srvos, ... }:
+
+  outputs = { self, nixpkgs, srvos, scannedinavianblog, ... }:
     {
       nixosConfigurations.whiro = nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit scannedinavianblog; };
         system = "x86_64-linux";
         modules = [
           srvos.nixosModules.hardware-hetzner-cloud

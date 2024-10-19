@@ -3,12 +3,12 @@
   pkgs,
   lib,
   callPackage,
+  scannedinavianblog,
   ...
 }: {
   imports = [
     (builtins.fetchTarball {
       # Pick a commit from the branch you are interested in
-      # url = "https://gitlab.com/simple-nixos-mailserver/nixos-mailserver/-/archive/nixos-22.05/nixos-mailserver-nixos-22.05.tar.gz";
       url = "https://gitlab.com/simple-nixos-mailserver/nixos-mailserver/-/archive/nixos-24.05/nixos-mailserver-nixos-24.05.tar.gz";
       # And set its hash
       sha256 = "0clvw4622mqzk1aqw1qn6shl9pai097q62mq1ibzscnjayhp278b";
@@ -128,7 +128,7 @@
 
         enableACME = true;
         forceSSL = true;
-        root = "${pkgs.callPackage ./scannedinavian.nix {} }/dist";
+        root = "${scannedinavianblog.packages.x86_64-linux.website}/dist";
 
       };
     };
