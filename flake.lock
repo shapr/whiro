@@ -1,21 +1,5 @@
 {
   "nodes": {
-    "flake-compat": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1696426674,
-        "narHash": "sha256-kvjfFW7WAETZlt09AgDn1MrtKzP7t90Vf7vypd3OL1U=",
-        "owner": "edolstra",
-        "repo": "flake-compat",
-        "rev": "0f9255e01c2351cc7d116c072cb317785dd33b33",
-        "type": "github"
-      },
-      "original": {
-        "owner": "edolstra",
-        "repo": "flake-compat",
-        "type": "github"
-      }
-    },
     "flake-utils": {
       "inputs": {
         "systems": "systems"
@@ -54,11 +38,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1729077633,
-        "narHash": "sha256-6sIuRVqVMHq9ZwcEVdpf2BuZeuLIUgvFznhIfsc75Jo=",
+        "lastModified": 1729450260,
+        "narHash": "sha256-3GNZr0V4b19RZ5mlyiY/4F8N2pzitvjDU6aHMWjAqLI=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "8f1d45587bd9af3dbf5146aa8a1347e20421597b",
+        "rev": "e3f55158e7587c5a5fdb0e86eb7ca4f455f0928f",
         "type": "github"
       },
       "original": {
@@ -81,18 +65,17 @@
     },
     "scannedinavianblog": {
       "inputs": {
-        "flake-compat": "flake-compat",
         "flake-utils": "flake-utils_2",
         "nixpkgs": [
           "nixpkgs"
         ]
       },
       "locked": {
-        "lastModified": 1728945556,
-        "narHash": "sha256-iTAuVQIjUEzNF6D2wezK8UWaNf+GSYORuN3WOFZKJJo=",
+        "lastModified": 1729611724,
+        "narHash": "sha256-GCzc17+NhLKq/tCE3qEC6S9xi2Tq1Ubf2ePqj4oIMjU=",
         "owner": "shapr",
         "repo": "scannedinavian",
-        "rev": "16f8fe4334ed2ca6f7e6256702af7c4b7d9ddd9b",
+        "rev": "95cc1bd8deb2980bbe8668a554f08b19bc153ffb",
         "type": "github"
       },
       "original": {
@@ -106,11 +89,11 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1729126279,
-        "narHash": "sha256-F5r7cJYzGOW9S7Y1yASNwY+6QtDg4R3xPRzrkQTu6V4=",
+        "lastModified": 1729472124,
+        "narHash": "sha256-l1uqRV0XPDrCVXb8irXSnIHOdzmss78KiUqB6WkhDMw=",
         "owner": "nix-community",
         "repo": "srvos",
-        "rev": "2fa72cea3d3d15b104f3c69de18316ef575bc837",
+        "rev": "5607765a4ac3a567cfe6bf4efb3c352193604f57",
         "type": "github"
       },
       "original": {
