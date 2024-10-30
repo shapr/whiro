@@ -74,7 +74,7 @@
 
   ### networking
   networking.hostName = "whiro";
-  networking.domain = "scannedinavian.org";
+  networking.domain = "scannedinavian.com";
   networking.firewall.allowedTCPPorts = [
     22 # SSH
     25 # SMTP do I need this?
@@ -95,10 +95,15 @@
     acceptTerms = true;
     defaults.email = "shae.erisson+acme@gmail.com";
     certs = {
-      "scannedinavian.org" = {
+      # "scannedinavian.org" = {
+      #   # webroot = "/var/www"; # THIS WILL MAKE YOU SAD, DON'T SET THIS
+      #   extraDomainNames = [ "www.scannedinavian.org"];
+      # };
+      "scannedinavian.com" = {
         # webroot = "/var/www"; # THIS WILL MAKE YOU SAD, DON'T SET THIS
-        extraDomainNames = [ "www.scannedinavian.org"];
+        extraDomainNames = [ "www.scannedinavian.com"];
       };
+
       # once I get everything else fixed up, uncomment these
       # "scannedinavian.org" = {
       #   extraDomainNames = [ "www.scannedinavian.com"  "tattletail.scannedinavian.com"];
@@ -124,12 +129,15 @@
     recommendedGzipSettings = true;
 
     virtualHosts = {
-      "scannedinavian.org" = {
-
+      # "scannedinavian.org" = {
+      #   enableACME = true;
+      #   forceSSL = true;
+      #   root = "${scannedinavianblog.packages.x86_64-linux.website}/dist";
+      # };
+      "scannedinavian.com" = {
         enableACME = true;
         forceSSL = true;
         root = "${scannedinavianblog.packages.x86_64-linux.website}/dist";
-
       };
     };
   };
@@ -158,22 +166,22 @@
 
   mailserver = {
     enable = true;
-    fqdn = "whiro.scannedinavian.org";
-    domains = [ "scannedinavian.org" ]; # "scannedinavian.net" "scannedinavian.com" "erisson.org" ];
+    fqdn = "whiro.scannedinavian.com";
+    domains = [ "scannedinavian.com" ]; # "scannedinavian.net" "scannedinavian.com" "erisson.org" ];
 
     enableSubmission = true;
     enableSubmissionSsl = true;
     enableImapSsl = true;
     enableImap = true;
-    sendingFqdn = "scannedinavian.org";
+    sendingFqdn = "scannedinavian.com";
 
     # A list of all login accounts. To create the password hashes, use
     # nix-shell -p mkpasswd --run 'mkpasswd -sm bcrypt'
     # nix run nixpkgs.apacheHttpd -c htpasswd -nbB "" "super secret password" | cut -d: -f2
     loginAccounts = {
-      "shae@scannedinavian.org" = {
-        hashedPasswordFile = "/etc/nixos/shae-email-hash";
-        aliases = ["postmaster@scannedinavian.org"];
+      "shae@scannedinavian.com" = {
+        hashedPassword = "$2b$05$ul8zWo9ZMid28wnK4Ma1Hego1K7SEu2ZP2ATBugtmSshhAamwma8.";
+        aliases = ["postmaster@scannedinavian.com" ];
       };
     };
 
