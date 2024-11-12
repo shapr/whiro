@@ -163,6 +163,12 @@
     shell = pkgs.zsh;
     openssh.authorizedKeys.keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJYlatXccSMal4uwSogKUEfJgrJ3YsH2uSbLFfgz6Vam" ];
   };
+  users.users.kragen = {
+    home = "/home/kragen";
+    isNormalUser = true;
+    shell = pkgs.zsh;
+    openssh.authorizedKeys.keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKSUvv3VYruilKEUFyAYSwRBR9lCFWdkr/8oMAIH3A1u user@debian" ];
+  };
 
   mailserver = {
     enable = true;
@@ -190,5 +196,6 @@
     certificateFile = "/var/lib/acme/scannedinavian.com/fullchain.pem";
     keyFile = "/var/lib/acme/scannedinavian.com/key.pem";
   };
+
   system.stateVersion = "24.05";
 }
