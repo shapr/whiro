@@ -14,7 +14,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, srvos, scannedinavianblog, ... }:
+  outputs = { nixpkgs, srvos, scannedinavianblog, ... }:
     {
       nixosConfigurations.whiro = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit scannedinavianblog; };
