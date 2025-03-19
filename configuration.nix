@@ -9,9 +9,9 @@
   imports = [
     (builtins.fetchTarball {
       # Pick a commit from the branch you are interested in
-      url = "https://gitlab.com/simple-nixos-mailserver/nixos-mailserver/-/archive/nixos-24.05/nixos-mailserver-nixos-24.05.tar.gz";
+      url = "https://gitlab.com/simple-nixos-mailserver/nixos-mailserver/-/archive/nixos-24.11/nixos-mailserver-nixos-24.11.tar.gz";
       # And set its hash
-      sha256 = "0clvw4622mqzk1aqw1qn6shl9pai097q62mq1ibzscnjayhp278b";
+      sha256 = "05k4nj2cqz1c5zgqa0c6b8sp3807ps385qca74fgs6cdc415y3qw";
     })
 
   ];
@@ -169,6 +169,12 @@
     shell = pkgs.zsh;
     openssh.authorizedKeys.keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKSUvv3VYruilKEUFyAYSwRBR9lCFWdkr/8oMAIH3A1u user@debian" ];
   };
+  users.users.magicwormhole = {
+    home = "/home/magicwormhole";
+    isNormalUser = true;
+    shell = pkgs.zsh;
+    openssh.authorizedKeys.keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJYlatXccSMal4uwSogKUEfJgrJ3YsH2uSbLFfgz6Vam" "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIP7dtwuLvsWGzoLJ3Q+Y+kbx65ca9IlIuIHQGiK76MQg meejah@mantle" ];
+  };
 
   mailserver = {
     enable = true;
@@ -189,6 +195,13 @@
         hashedPassword = "$2b$05$ul8zWo9ZMid28wnK4Ma1Hego1K7SEu2ZP2ATBugtmSshhAamwma8.";
         aliases = ["postmaster@scannedinavian.com" ];
       };
+
+      "magicwormhole@scannedinavian.com" = {
+        hashedPassword = "$2b$05$FCQcLBnvLKiH.eJU.vaFKeGxgdAaLpSpts/1Eo7aR.MX92l5CoGC6";
+        aliases = ["postmaster@scannedinavian.com" ];
+      };
+
+
     };
 
     # specify locations and copy certificates there
