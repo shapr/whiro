@@ -12,9 +12,13 @@
     flake-utils = {
       url = "github:numtide/flake-utils";
     };
+    nixos-mailserver = {
+      url = "gitlab:simple-nixos-mailserver/nixos-mailserver/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { nixpkgs, srvos, scannedinavianblog, ... }:
+  outputs = { nixpkgs, srvos, scannedinavianblog, nixos-mailserver, ... }:
     {
       nixosConfigurations.whiro = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit scannedinavianblog; };
@@ -24,6 +28,7 @@
           srvos.nixosModules.mixins-terminfo
           srvos.nixosModules.mixins-trusted-nix-caches
           srvos.nixosModules.server
+          nixos-mailserver.nixosModule
           # Finally add your configuration here
           ./configuration.nix
         ];
