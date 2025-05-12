@@ -142,6 +142,15 @@
     };
   };
 
+  services.postgresql = {
+    enable = true;
+    package = pkgs.postgresql_17;
+    extensions = [
+      pkgs.postgresql17Packages.postgis
+      pkgs.postgresql17Packages.pg_repack
+    ];
+  };
+
   services.fail2ban.enable = true;
 
   users.users.nginx.extraGroups = [ "acme" ];
@@ -155,6 +164,12 @@
     shell = pkgs.zsh;
     openssh.authorizedKeys.keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJYlatXccSMal4uwSogKUEfJgrJ3YsH2uSbLFfgz6Vam" ];
   };
+  users.users.mclare = {
+    home = "/home/mclare";
+    isNormalUser = true;
+    shell = pkgs.zsh;
+    openssh.authorizedKeys.keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMoT0LahveaIbPbQiaPap9pFrnxhGsvSTQjF0MNTk2WH" ];
+  };
   users.users.kragen = {
     home = "/home/kragen";
     isNormalUser = true;
@@ -166,6 +181,15 @@
     isNormalUser = true;
     shell = pkgs.zsh;
     openssh.authorizedKeys.keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJYlatXccSMal4uwSogKUEfJgrJ3YsH2uSbLFfgz6Vam" "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIP7dtwuLvsWGzoLJ3Q+Y+kbx65ca9IlIuIHQGiK76MQg meejah@mantle" ];
+  };
+
+  users.users.angel = {
+    home = "/home/angel";
+    isNormalUser = true;
+    shell = pkgs.zsh;
+    openssh.authorizedKeys.keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPXi7Qt2IyqffxZGY7JYc3kviKC8WlI6nF2JSn7zqeLD angel@brymlys
+" ];
+
   };
 
   mailserver = {
@@ -193,6 +217,9 @@
         aliases = ["postmaster@scannedinavian.com" ];
       };
 
+      "angel@scannedinavian.com" = {
+        hashedPassword = "$2y$05$op1lhYSQcgiqvlDv6eCN7ug4AdmkwtZXwEeQTyEPeqQHnqGShA4w.";
+      };
 
     };
 
