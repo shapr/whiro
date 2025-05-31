@@ -193,6 +193,7 @@
   };
 
   mailserver = {
+    stateVersion = 1;
     enable = true;
     fqdn = "whiro.scannedinavian.com";
     domains = [ "scannedinavian.com" ]; # "scannedinavian.net" "scannedinavian.com" "erisson.org" ];
