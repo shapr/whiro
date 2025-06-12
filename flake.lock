@@ -193,11 +193,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1749734886,
-        "narHash": "sha256-DSqHKsISb5JUNLYCM9fofTr7P9Mshp+U2gNP4jvs4po=",
+        "lastModified": 1749759370,
+        "narHash": "sha256-V/SCFz/fOBqC/hHpnTjLLKDbsoCOdg1uq+kQcIaOPJ0=",
         "owner": "shapr",
         "repo": "scannedinavian",
-        "rev": "076510959495b7a79ec4fcd83cbfe6f8597e2eb0",
+        "rev": "93456858375c773dd284b6afb5c6b4e43854fc28",
         "type": "github"
       },
       "original": {
