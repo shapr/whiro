@@ -15,7 +15,7 @@
       graphics = false;
     };
   };
-  environment.systemPackages = with pkgs; [ htop ];
+  environment.systemPackages = with pkgs; [ htop fzf zoxide eza starship ];
   documentation.nixos.enable = false;
   time.timeZone = "Europe/London";
   i18n.defaultLocale = "en_US.UTF-8";
