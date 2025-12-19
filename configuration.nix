@@ -108,50 +108,58 @@
       # };
     };
   };
-  # for testing
-  # security.acme.defaults.server = "https://acme-staging-v02.api.letsencrypt.org/directory";
 
-  services.nginx = {
-    enable = true;
-    logError = "stderr info";
-    # adminAddr = "webmaster@scannedinavian.com"; # only in apache?
-    # addSSL = true;
-    recommendedTlsSettings = true;
-    recommendedOptimisation = true;
-    recommendedGzipSettings = true;
+  services = {
+    tailscale = {
+      enable = true;
+      openFirewall = true;
+    };
 
-    virtualHosts = {
-      # "scannedinavian.org" = {
-      #   enableACME = true;
-      #   forceSSL = true;
-      #   root = "${scannedinavianblog.packages.x86_64-linux.website}/dist";
-      # };
-      "scannedinavian.com" = {
-        enableACME = true;
-        forceSSL = true;
-        root = "${scannedinavianblog.packages.x86_64-linux.website}/dist";
+    # for testing
+    # security.acme.defaults.server = "https://acme-staging-v02.api.letsencrypt.org/directory";
+
+    nginx = {
+      enable = true;
+      logError = "stderr info";
+      # adminAddr = "webmaster@scannedinavian.com"; # only in apache?
+      # addSSL = true;
+      recommendedTlsSettings = true;
+      recommendedOptimisation = true;
+      recommendedGzipSettings = true;
+
+      virtualHosts = {
+        # "scannedinavian.org" = {
+        #   enableACME = true;
+        #   forceSSL = true;
+        #   root = "${scannedinavianblog.packages.x86_64-linux.website}/dist";
+        # };
+        "scannedinavian.com" = {
+          enableACME = true;
+          forceSSL = true;
+          root = "${scannedinavianblog.packages.x86_64-linux.website}/dist";
+        };
       };
     };
-  };
 
-  services.openssh = {
-    enable = true;
-    settings = {
-      PermitRootLogin = "yes";
-      PasswordAuthentication = false;
+    openssh = {
+      enable = true;
+      settings = {
+        PermitRootLogin = "yes";
+        PasswordAuthentication = false;
+      };
     };
-  };
 
-  services.postgresql = {
-    enable = true;
-    package = pkgs.postgresql_17;
-    extensions = [
-      pkgs.postgresql17Packages.postgis
-      pkgs.postgresql17Packages.pg_repack
-    ];
-  };
+    postgresql = {
+      enable = true;
+      package = pkgs.postgresql_17;
+      extensions = [
+        pkgs.postgresql17Packages.postgis
+        pkgs.postgresql17Packages.pg_repack
+      ];
+    };
 
-  services.fail2ban.enable = true;
+    fail2ban.enable = true;
+  };
 
   users.users.nginx.extraGroups = [ "acme" ];
 
