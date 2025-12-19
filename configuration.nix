@@ -78,6 +78,7 @@
     993 # IMAP with TLS
     # 5000 # ZNC IRC bouncer
   ];
+  networking.firewall.checkReversePath = "loose";
   ### static config for networking from https://wiki.nixos.org/wiki/Install_NixOS_on_Hetzner_Cloud#Network_configuration
   #systemd.network.enable = true;
   #systemd.network.networks
