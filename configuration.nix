@@ -234,7 +234,6 @@
     };
 
     # specify locations and copy certificates there
-    certificateScheme = "manual";
     certificateFile = "/var/lib/acme/scannedinavian.com/fullchain.pem";
     keyFile = "/var/lib/acme/scannedinavian.com/key.pem";
   };
