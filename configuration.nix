@@ -162,43 +162,47 @@
     fail2ban.enable = true;
   };
 
-  users.users.nginx.extraGroups = [ "acme" ];
-
   programs.zsh.enable = true;
+  users = {
+    users = {
 
-  users.users.root.openssh.authorizedKeys.keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJYlatXccSMal4uwSogKUEfJgrJ3YsH2uSbLFfgz6Vam" ];
-  users.users.shae = {
-    home = "/home/shae";
-    isNormalUser = true;
-    shell = pkgs.zsh;
-    openssh.authorizedKeys.keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJYlatXccSMal4uwSogKUEfJgrJ3YsH2uSbLFfgz6Vam" ];
-  };
-  users.users.mclare = {
-    home = "/home/mclare";
-    isNormalUser = true;
-    shell = pkgs.zsh;
-    openssh.authorizedKeys.keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMoT0LahveaIbPbQiaPap9pFrnxhGsvSTQjF0MNTk2WH" ];
-  };
-  users.users.kragen = {
-    home = "/home/kragen";
-    isNormalUser = true;
-    shell = pkgs.zsh;
-    openssh.authorizedKeys.keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKSUvv3VYruilKEUFyAYSwRBR9lCFWdkr/8oMAIH3A1u user@debian" ];
-  };
-  users.users.magicwormhole = {
-    home = "/home/magicwormhole";
-    isNormalUser = true;
-    shell = pkgs.zsh;
-    openssh.authorizedKeys.keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJYlatXccSMal4uwSogKUEfJgrJ3YsH2uSbLFfgz6Vam" "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIP7dtwuLvsWGzoLJ3Q+Y+kbx65ca9IlIuIHQGiK76MQg meejah@mantle" ];
-  };
+      nginx.extraGroups = [ "acme" ];
 
-  users.users.angel = {
-    home = "/home/angel";
-    isNormalUser = true;
-    shell = pkgs.zsh;
-    openssh.authorizedKeys.keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPXi7Qt2IyqffxZGY7JYc3kviKC8WlI6nF2JSn7zqeLD angel@brymlys
-" ];
+      root.openssh.authorizedKeys.keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJYlatXccSMal4uwSogKUEfJgrJ3YsH2uSbLFfgz6Vam" ];
+      shae = {
+        home = "/home/shae";
+        isNormalUser = true;
+        shell = pkgs.zsh;
+        openssh.authorizedKeys.keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJYlatXccSMal4uwSogKUEfJgrJ3YsH2uSbLFfgz6Vam" ];
+      };
+      mclare = {
+        home = "/home/mclare";
+        isNormalUser = true;
+        shell = pkgs.zsh;
+        openssh.authorizedKeys.keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMoT0LahveaIbPbQiaPap9pFrnxhGsvSTQjF0MNTk2WH" ];
+      };
+      kragen = {
+        home = "/home/kragen";
+        isNormalUser = true;
+        shell = pkgs.zsh;
+        openssh.authorizedKeys.keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKSUvv3VYruilKEUFyAYSwRBR9lCFWdkr/8oMAIH3A1u user@debian" ];
+      };
+      magicwormhole = {
+        home = "/home/magicwormhole";
+        isNormalUser = true;
+        shell = pkgs.zsh;
+        openssh.authorizedKeys.keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJYlatXccSMal4uwSogKUEfJgrJ3YsH2uSbLFfgz6Vam" "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIP7dtwuLvsWGzoLJ3Q+Y+kbx65ca9IlIuIHQGiK76MQg meejah@mantle" ];
+      };
 
+      angel = {
+        home = "/home/angel";
+        isNormalUser = true;
+        shell = pkgs.zsh;
+        openssh.authorizedKeys.keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPXi7Qt2IyqffxZGY7JYc3kviKC8WlI6nF2JSn7zqeLD angel@brymlys" ];
+      };
+
+
+    };
   };
 
   mailserver = {
@@ -234,8 +238,10 @@
     };
 
     # specify locations and copy certificates there
-    certificateFile = "/var/lib/acme/scannedinavian.com/fullchain.pem";
-    keyFile = "/var/lib/acme/scannedinavian.com/key.pem";
+    x509 = {
+      certificateFile = "/var/lib/acme/scannedinavian.com/fullchain.pem";
+      privateKeyFile = "/var/lib/acme/scannedinavian.com/key.pem";
+    };
   };
 
   system.stateVersion = "24.05";
