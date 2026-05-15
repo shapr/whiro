@@ -220,7 +220,7 @@
     # A list of all login accounts. To create the password hashes, use
     # nix-shell -p mkpasswd --run 'mkpasswd -sm bcrypt'
     # nix run nixpkgs.apacheHttpd -c htpasswd -nbB "" "super secret password" | cut -d: -f2
-    loginAccounts = {
+    accounts = {
       "shae@scannedinavian.com" = {
         hashedPassword = "$2b$05$ul8zWo9ZMid28wnK4Ma1Hego1K7SEu2ZP2ATBugtmSshhAamwma8.";
         aliases = ["postmaster@scannedinavian.com" ];
