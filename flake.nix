@@ -28,7 +28,7 @@
           srvos.nixosModules.mixins-terminfo
           srvos.nixosModules.mixins-trusted-nix-caches
           srvos.nixosModules.server
-          nixos-mailserver.nixosModule
+          nixos-mailserver.nixosModules.default
           # Finally add your configuration here
           ./configuration.nix
         ];
